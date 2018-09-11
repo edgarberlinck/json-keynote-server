@@ -18,3 +18,10 @@ exports.addKeynote = (req, res) => {
         .then(() => res.status(201).send())
         .catch(err => res.status(500).send())
 }
+
+exports.removeKeynote = (req, res) => {
+    let { id } = req.params;
+    Keynote.deleteOne({ _id: id })
+        .then(() => res.status(201).send())
+        .catch(() => res.status(500).send());
+}
